@@ -54,6 +54,17 @@ export async function getCapsules() {
   return (data ?? []).map(toCapsule);
 }
 
+export async function getAllPublicCapsules() {
+  const { data, error } = await supabase
+    .from("capsules")
+    .select("*")
+    .eq("is_public", true)
+    .order("delivery_date", { ascending: true });
+
+  if (error) throw error;
+  return (data ?? []).map(toCapsule);
+}
+
 export async function getPublicCapsulesByEvent(eventTag: string) {
   const { data, error } = await supabase
     .from("capsules")
@@ -62,7 +73,7 @@ export async function getPublicCapsulesByEvent(eventTag: string) {
     .eq("is_public", true);
 
   if (error) throw error;
-  return data as Capsule[];
+  return (data ?? []).map(toCapsule);
 }
 
 export async function updateCapsuleDate(id: string, newDate: string) {

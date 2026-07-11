@@ -24,8 +24,6 @@ export default function CapsuleDashboard({
   async function refresh() {
     const fresh = await getCapsules();
     setCapsules(fresh);
-
-    console.log(capsules);
   }
 
   useEffect(() => {
@@ -44,6 +42,13 @@ export default function CapsuleDashboard({
     });
   }, []);
 
+  // lengths of each filter
+  const counts: Record<Filter, number> = {
+    all: capsules.length,
+    locked: capsules.filter((c) => c.status === "locked").length,
+    delivered: capsules.filter((c) => c.status === "delivered").length,
+  };
+
   const filtered = capsules.filter(
     (eachCapsule) => filter === "all" || eachCapsule.status === filter,
   );
@@ -61,7 +66,7 @@ export default function CapsuleDashboard({
                 : "bg-white text-black border-gray-300"
             }`}
           >
-            {filt[0].toUpperCase() + filt.slice(1)}
+            {filt[0].toUpperCase() + filt.slice(1)} ({counts[filt]})
           </button>
         ))}
       </div>

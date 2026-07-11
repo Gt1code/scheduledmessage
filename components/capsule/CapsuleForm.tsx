@@ -79,6 +79,7 @@ export default function CapsuleForm() {
   function resetForm() {
     setTitle("");
     setContent("");
+    setFile(null);
     setDeliveryDate("");
     setRecipientContact("");
     setIsPublic(false);

@@ -21,7 +21,7 @@ function buildMediaHtml(capsule: any): string {
     case "video":
       return `
         <div style="margin: 16px 0; text-align: center;">
-          
+          <a
             href="${capsule.mediaUrl}"
             style="display: inline-block; padding: 12px 20px; background: #000; color: #fff; text-decoration: none; border-radius: 6px;"
           >
@@ -33,7 +33,7 @@ function buildMediaHtml(capsule: any): string {
     case "audio":
       return `
         <div style="margin: 16px 0; text-align: center;">
-          
+          <a
             href="${capsule.mediaUrl}"
             style="display: inline-block; padding: 12px 20px; background: #000; color: #fff; text-decoration: none; border-radius: 6px;"
           >

@@ -7,7 +7,7 @@ export default function HomePage() {
       <div className="w-full p-6 max-w-3xl flex flex-col gap-6 items-center justify-center">
         <section className="text-center space-y-3">
           <h1 className="text-3xl sm:text-4xl font-bold">
-            Send a Message to the Future
+            Scheduled Message Time Capsule
           </h1>
           <p className="text-gray-600">
             Seal a text, photo, audio, or video capsule and have it delivered
