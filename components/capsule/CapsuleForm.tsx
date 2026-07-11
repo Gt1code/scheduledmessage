@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { createCapsule } from "@/lib/capsules";
 import { CapsuleType, DeliveryChannel } from "@/types/capsule";
 import { toast } from "sonner";
@@ -18,6 +18,7 @@ export default function CapsuleForm() {
   const [eventTag, setEventTag] = useState("");
   const [senderName, setSenderName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   async function uploadMedia(file: File): Promise<string> {
     const fileExt = file.name.split(".").pop();
@@ -85,6 +86,10 @@ export default function CapsuleForm() {
     setIsPublic(false);
     setEventTag("");
     setSenderName("");
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   }
 
   return (
@@ -181,7 +186,7 @@ export default function CapsuleForm() {
           value={recipientContact}
           onChange={(e) => setRecipientContact(e.target.value)}
           required
-          placeholder="email@example.com or phone number"
+          placeholder="sundaygodstimegt1@gmail.com or phone number"
           className="w-full border rounded-md px-3 py-2"
         />
       </div>

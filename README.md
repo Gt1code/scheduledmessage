@@ -16,40 +16,6 @@ A web app for sending time-locked messages to the future. Create a text, image, 
 - Automatic email delivery once a capsule's date is reached
 - Dashboard to track locked vs. delivered capsules
 
-## Folder Structure
-
-```
-app/
-  page.tsx                       Landing page — capsule creation form
-  dashboard/
-    page.tsx                     "My Capsules" dashboard
-  wall/
-    [eventTag]/
-      page.tsx                   Public time-capsule wall
-  api/
-    deliver/
-      route.ts                   Server route — sends delivery emails via Resend
-
-components/
-  capsule/
-    CapsuleForm.tsx               Capsule creation form (incl. media upload)
-    CapsuleDashboard.tsx          Dashboard state, filters, delivery check
-    CapsuleCard.tsx               Single capsule display (owner view)
-    DeliveryBadge.tsx             Locked/Delivered status pill
-    DateScheduler.tsx             Drag-and-drop delivery date calendar
-  wall/
-    WallGrid.tsx                  Public wall grid layout
-    WallCapsuleCard.tsx           Public capsule display (gated by delivery status)
-
-lib/
-  supabase.ts                     Supabase client setup
-  capsules.ts                     Capsule CRUD + camelCase/snake_case mapping
-  delivery.ts                     Checks due capsules, triggers email, marks delivered
-
-types/
-  capsule.ts                      Shared Capsule types
-```
-
 ## Setup
 
 1. Create a Supabase project and run the schema (table, storage bucket, RLS policies)
@@ -68,6 +34,7 @@ types/
 
 ## Known Limitations
 
+- email delivery is functional but currently restricted to the developer's own inbox (sundaygodstimegt1@gmail.com) pending domain verification
 - Delivery emails are checked and sent when the dashboard loads, not via a real background scheduler (no cron job yet)
 - RLS policies are open for demo purposes and not tied to real user authentication
 - Only email delivery is implemented; SMS and push are defined in the schema but not yet implemented
