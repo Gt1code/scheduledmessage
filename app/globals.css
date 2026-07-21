@@ -49,6 +49,14 @@
 }
 
 :root {
+  /* my styles */
+  --capsule-bg: #faf9f6;
+  --capsule-surface: #ffffff;
+  --capsule-ink: #1a1a18;
+  --capsule-muted: #6b6b64;
+  --capsule-border: #e4e2dc;
+  --capsule-accent: #7a2e2e;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
