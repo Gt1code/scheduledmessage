@@ -8,11 +8,6 @@ export async function checkAndDeliverCapsules(capsules: Capsule[]) {
     (c) => c.status === "locked" && new Date(c.deliveryDate) <= now,
   );
 
-  console.log(
-    "Due capsules:",
-    due.map((c) => c.title),
-  );
-
   if (due.length === 0) return [];
 
   const results = await Promise.allSettled(
@@ -27,9 +22,9 @@ export async function checkAndDeliverCapsules(capsules: Capsule[]) {
     ),
   );
 
-  results.forEach((result, i) => {
+  results.forEach((result) => {
     if (result.status === "rejected") {
-      console.error(`Failed to send capsule "${due[i].title}":`, result.reason);
+      // console.error(`Failed to send capsule "${due[i].title}":`, result.reason);
     }
   });
 

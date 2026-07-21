@@ -71,7 +71,7 @@ export default function CapsuleForm() {
       toast.error("Something went wrong creating your capsule.", {
         position: "top-center",
       });
-      console.error(err);
+      // console.error(err);
     } finally {
       setIsSubmitting(false);
     }

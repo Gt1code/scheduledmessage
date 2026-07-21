@@ -11,7 +11,7 @@ export default async function AllWallsPage() {
   try {
     capsules = await getAllPublicCapsules();
   } catch (err) {
-    console.error("Failed to load public capsules:", err);
+    // console.error("Failed to load public capsules:", err);
     throw err; // still surface it, but now you'll see exactly what it was in your terminal
   }
 
