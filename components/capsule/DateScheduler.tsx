@@ -10,6 +10,7 @@ interface DateSchedulerProps {
   onUpdate: () => void;
 }
 
+// get all the days in a month
 function getMonthDays(year: number, month: number) {
   const days: Date[] = [];
   const date = new Date(year, month, 1);
@@ -28,6 +29,7 @@ export default function DateScheduler({
   const [viewDate, setViewDate] = useState(today);
   const days = getMonthDays(viewDate.getFullYear(), viewDate.getMonth());
 
+  // For each rendered calendar cell, this filters the full capsules array down to only the ones whose deliveryDate falls on that specific day
   function capsulesForDay(day: Date) {
     return capsules.filter(
       (c) => new Date(c.deliveryDate).toDateString() === day.toDateString(),

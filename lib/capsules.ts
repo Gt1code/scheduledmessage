@@ -80,7 +80,9 @@ export async function updateCapsuleDate(id: string, newDate: string) {
   const { error } = await supabase
     .from("capsules")
     .update({ delivery_date: newDate })
-    .eq("id", id);
+    .eq("id", id)
+    .select()
+    .single();
 
   if (error) throw error;
 }

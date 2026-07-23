@@ -60,7 +60,7 @@ export default function CapsuleDashboard({
           <button
             key={filt}
             onClick={() => setFilter(filt)}
-            className={`px-3 py-1.5 rounded-md text-sm font-medium border transition-colors ${
+            className={`px-3 py-1.5 cursor-pointer rounded-md text-sm font-medium border transition-colors ${
               filter === filt
                 ? "bg-black text-white border-black"
                 : "bg-white text-black border-gray-300"

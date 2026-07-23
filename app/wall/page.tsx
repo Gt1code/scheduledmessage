@@ -5,32 +5,37 @@ import WallGrid from "@/components/wall/WallGrid";
 import Link from "next/link";
 
 export default async function AllWallsPage() {
-  //   const capsules = await getAllPublicCapsules();
-
   let capsules;
   try {
     capsules = await getAllPublicCapsules();
   } catch (err) {
-    // console.error("Failed to load public capsules:", err);
-    throw err; // still surface it, but now you'll see exactly what it was in your terminal
+    console.error("Failed to load public capsules:", err);
+    throw err;
   }
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-8">
-      <div className="flex gap-4 justify-between items-center mb-6 w-full">
-        <h1 className="text-2xl font-bold mb-1">Public Time Capsule Wall</h1>
-        <Link
-          href="/dashboard"
-          className="text-sm font-medium underline text-gray-700 hover:text-black"
-        >
-          View My Capsules
-        </Link>
-      </div>
-      <p className="text-sm text-gray-500 mb-6">
-        Capsules shared across every event
-      </p>
+    <main className="w-full min-h-screen bg-(--capsule-bg) flex justify-center px-4 py-8 sm:py-10">
+      <div className="w-full max-w-5xl flex flex-col gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h1 className="text-2xl font-bold text-(--capsule-ink)">
+              Public Time Capsule Wall
+            </h1>
+            <p className="text-sm text-(--capsule-muted) mt-0.5">
+              Capsules shared across every event
+            </p>
+          </div>
 
-      <WallGrid capsules={capsules} />
+          <Link
+            href="/dashboard"
+            className="text-sm font-medium text-(--capsule-ink) underline underline-offset-4 decoration-(--capsule-border) hover:decoration-(--capsule-ink) transition-colors"
+          >
+            View my capsules →
+          </Link>
+        </div>
+
+        <WallGrid capsules={capsules} />
+      </div>
     </main>
   );
 }

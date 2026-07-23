@@ -54,14 +54,13 @@ export default function CapsuleForm() {
         mediaUrl,
         deliveryDate,
         channel,
-        recipientContact,
+        recipientContact: recipientContact.toLowerCase(),
         isPublic,
         eventTag: eventTag || undefined,
         senderName,
       });
 
       toast.success("Capsule sealed.", {
-        description: "It will be delivered on your chosen date.",
         position: "top-center",
       });
 
@@ -195,8 +194,8 @@ export default function CapsuleForm() {
               className={inputClass}
             >
               <option value="email">Email</option>
-              <option value="sms">SMS</option>
-              <option value="push">Push</option>
+              {/* <option value="sms">SMS</option>
+              <option value="push">Push</option> */}
             </select>
           </div>
         </div>
@@ -208,6 +207,8 @@ export default function CapsuleForm() {
             onChange={(e) => setRecipientContact(e.target.value)}
             required
             placeholder="email@example.com or phone number"
+            name="email"
+            autoComplete="email"
             className={inputClass}
           />
         </div>
@@ -259,7 +260,7 @@ export default function CapsuleForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-7 w-full rounded-md bg-(--capsule-ink) text-(--capsule-bg) py-3 text-sm font-semibold tracking-wide uppercase transition-transform active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100"
+        className={`mt-7 ${isSubmitting ? "cursor-not-allowed" : "cursor-pointer"} hover:scale-102 w-full rounded-md bg-(--capsule-ink) text-(--capsule-bg) py-3 text-sm font-semibold tracking-wide uppercase transition-transform active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100`}
       >
         {isSubmitting ? "Sealing…" : "Seal Capsule"}
       </button>
